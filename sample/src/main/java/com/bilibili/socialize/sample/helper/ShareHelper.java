@@ -32,6 +32,13 @@ public final class ShareHelper {
     private FragmentActivity mContext;
     private Callback mCallback;
     private BaseSharePlatformSelector mPlatformSelector;
+    private static ShareTarget[] sShareTargets = {
+            new ShareTarget(SocializeMedia.WEIXIN, com.bilibili.socialize.share.utils.R.string.bili_socialize_text_weixin_key, com.bilibili.socialize.share.utils.R.drawable.bili_socialize_wechat),
+            new ShareTarget(SocializeMedia.WEIXIN_MONMENT, com.bilibili.socialize.share.utils.R.string.bili_socialize_text_weixin_circle_key, com.bilibili.socialize.share.utils.R.drawable.bili_socialize_wxcircle),
+            new ShareTarget(SocializeMedia.GENERIC, com.bilibili.socialize.share.utils.R.string.bili_share_sdk_others, com.bilibili.socialize.share.utils.R.drawable.bili_socialize_sms_on),
+            new ShareTarget(SocializeMedia.COPY, com.bilibili.socialize.share.utils.R.string.bili_socialize_text_copy_url, com.bilibili.socialize.share.utils.R.drawable.bili_socialize_copy_url)
+    };
+
 
     public static ShareHelper instance(FragmentActivity context, Callback callback) {
         return new ShareHelper(context, callback);
@@ -87,6 +94,7 @@ public final class ShareHelper {
                 onShareSelectorDismiss();
             }
         }, mShareItemClick);
+        mPlatformSelector.setShareTargets(sShareTargets);
         mPlatformSelector.show();
     }
 
