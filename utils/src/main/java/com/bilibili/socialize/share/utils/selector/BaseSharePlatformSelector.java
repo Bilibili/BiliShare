@@ -61,6 +61,10 @@ public abstract class BaseSharePlatformSelector {
     public abstract void show();
 
     public abstract void dismiss();
+    
+    public void setShareTargets(ShareTarget[] shareTargetList){
+        shareTargets=shareTargetList;
+    }
 
     public void release() {
         mContext = null;
