@@ -133,6 +133,8 @@ public abstract class BaseWxShareHandler extends BaseShareHandler {
                 WXMediaMessage msg = new WXMediaMessage();
                 msg.mediaObject = imgObj;
                 msg.thumbData = mImageHelper.buildThumbData(params.getImage());
+                msg.title = params.getTitle();
+                msg.description = params.getContent();
 
                 final SendMessageToWX.Req req = new SendMessageToWX.Req();
                 req.transaction = buildTransaction("imgshareappdata");
@@ -157,7 +159,7 @@ public abstract class BaseWxShareHandler extends BaseShareHandler {
             imgObj.imageData = mImageHelper.buildThumbData(image, IMAGE_MAX, IMAGE_WIDTH, IMAGE_HEIGHT, false);
         }
 
-        return imgObj;
+        return imgObj; 
     }
 
     @Override
